@@ -42,16 +42,17 @@ class Car
     {
       mysql_query("insert into cars () values ()");
       $this->id = mysql_insert_id();
+      self::$_rows[$this->id] = array();
     }
-    self::$_rows['id'] = $this->id;
-    self::$_rows['price'] = $this->price;
-    self::$_rows['make'] = $this->make;
-    self::$_rows['model'] = $this->model;
-    self::$_rows['year'] = $this->year;
-    self::$_rows['mileage'] = $this->mileage;
-    self::$_rows['vin'] = $this->vin;
-    self::$_rows['uri'] = $this->uri;
-    self::$_rows['dealer'] = $this->dealer;
+    self::$_rows[$this->id]['id'] = $this->id;
+    self::$_rows[$this->id]['price'] = $this->price;
+    self::$_rows[$this->id]['make'] = $this->make;
+    self::$_rows[$this->id]['model'] = $this->model;
+    self::$_rows[$this->id]['year'] = $this->year;
+    self::$_rows[$this->id]['mileage'] = $this->mileage;
+    self::$_rows[$this->id]['vin'] = $this->vin;
+    self::$_rows[$this->id]['uri'] = $this->uri;
+    self::$_rows[$this->id]['dealer'] = $this->dealer;
     mysql_query('replace into cars (`'.implode('`, `',array_map('mysql_real_escape_string',array_keys(self::$_rows[$this->id]))).'`) values (\''.implode("', '",array_map('mysql_real_escape_string',self::$_rows[$this->id])).'\')');
     self::getRows();
   }
