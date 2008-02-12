@@ -31,7 +31,7 @@ $(document).ready(function() {
               .html(data['vin']));
         else
           vinrow = $(document.createElement('td')).html(data['vin']);
-        $('#cars tbody').append($(document.createElement('tr'))
+        $('#cars tbody').append($(document.createElement('tr')).css('display', 'none')
           .append($(document.createElement('td')).html(data['price']))
           .append($(document.createElement('td')).html(data['make']))
           .append($(document.createElement('td')).html(data['model']))
@@ -55,6 +55,7 @@ $(document).ready(function() {
                 .attr('src', 'i/dialog-titlebar-close.png')
                 .attr('alt', 'Delete')
                 .val('Delete'))))));
+        $('#cars tbody tr:last-child').fadeIn();
         $('#add_form input[type=submit]').attr('disabled','');
         $('#add').dialogClose();
         return false;
@@ -99,7 +100,7 @@ $(document).ready(function() {
         success: function(data) {
           eval('data = '+data);
           if (data['deleted'])
-            form.parent().parent().remove();
+            form.parent().parent().fadeOut();
           return false;
         }
       });
