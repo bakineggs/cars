@@ -6,30 +6,24 @@
   color: #00f;
   cursor: pointer;
 }
-.real_plus_button {
-  display: block;
-  float: left;
-  background: url(images/button.gif);
-}
 .real_plus_button:hover {
   cursor: pointer;
   text-decoration: underline;
 }
+.real_plus_button .top_left {
+  float: left;
+  background: url(images/button.gif);
+}
 .real_plus_button .top_right {
-  display: block;
   background: url(images/button.gif) no-repeat right top;
 }
 .real_plus_button .bottom_left {
-  display: block;
   background: url(images/button.gif) no-repeat left bottom;
 }
 .real_plus_button .bottom_right {
-  display: block;
   background: url(images/button.gif) no-repeat right bottom;
 }
 .real_plus_button .plus {
-  display: block;
   padding: 5px 9px 3px 22px;
   background: url(images/plus.gif) no-repeat 9px center;
-  vertical-align: middle;
 }

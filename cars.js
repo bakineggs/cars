@@ -49,6 +49,6 @@ $(document).ready(function() {
   });
   $.each($('.plus_button'), function(i, el) {
     contents = $(el).html();
-    $(el).html('').removeClass('plus_button').addClass('real_plus_button').append($(document.createElement('span')).addClass('top_right').append($(document.createElement('span')).addClass('bottom_left').append($(document.createElement('span')).addClass('bottom_right').append($(document.createElement('span')).addClass('plus').html(contents)))));
+    $(el).html('').removeClass('plus_button').addClass('real_plus_button').append($(document.createElement('div')).addClass('top_left').append($(document.createElement('div')).addClass('top_right').append($(document.createElement('div')).addClass('bottom_left').append($(document.createElement('div')).addClass('bottom_right').append($(document.createElement('div')).addClass('plus').html(contents))))));
   });
 });
