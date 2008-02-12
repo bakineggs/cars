@@ -45,15 +45,16 @@ $(document).ready(function() {
             .attr('method', 'post')
             .attr('action', 'delete.php')
             .addClass('delete_form')
-            .append($(document.createElement('input'))
-              .attr('type', 'hidden')
-              .attr('name', 'id')
-              .val(data['id']))
-            .append($(document.createElement('input'))
-              .attr('type', 'image')
-              .attr('src', 'i/dialog-titlebar-close.png')
-              .attr('alt', 'Delete')
-              .val('Delete')))));
+            .append($(document.createElement('p'))
+              .append($(document.createElement('input'))
+                .attr('type', 'hidden')
+                .attr('name', 'id')
+                .val(data['id']))
+              .append($(document.createElement('input'))
+                .attr('type', 'image')
+                .attr('src', 'i/dialog-titlebar-close.png')
+                .attr('alt', 'Delete')
+                .val('Delete'))))));
         $('#add_form input[type=submit]').attr('disabled','');
         $('#add').dialogClose();
         return false;

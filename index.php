@@ -44,8 +44,10 @@ $cars = Car::findAll();
           <td><a href="<?= h($car->uri) ?>"><?= h($car->dealer) ?></a></td>
           <td>
             <form method="post" action="delete.php" class="delete_form">
-              <input type="hidden" name="id" value="<?= h($car->id) ?>" />
-              <input type="image" src="i/dialog-titlebar-close.png" value="Delete" alt="Delete" />
+              <p>
+                <input type="hidden" name="id" value="<?= h($car->id) ?>" />
+                <input type="image" src="i/dialog-titlebar-close.png" value="Delete" alt="Delete" />
+              </p>
             </form>
           </td>
         </tr>
