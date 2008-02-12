@@ -2,13 +2,13 @@
 class Car
 {
   private static $_rows = array();
-  public $id, $price, $make, $model, $year, $mileage, $vin, $uri, $dealer;
+  public $id = 0, $price, $make, $model, $year, $mileage, $vin, $uri, $dealer;
   public function __construct($id = 0)
   {
     self::getRows();
-    $this->id = $id;
     if (self::$_rows[$this->id])
     {
+      $this->id = $id;
       $this->price = self::$_rows[$this->id]['price'];
       $this->make = self::$_rows[$this->id]['make'];
       $this->model = self::$_rows[$this->id]['model'];
