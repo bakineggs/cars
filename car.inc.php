@@ -31,7 +31,7 @@ class Car
   {
     if (!sizeof(self::$_rows) || $force)
     {
-      $query = mysql_query("select * from cars");
+      $query = mysql_query("select * from cars where deleted=0");
       while ($row = mysql_fetch_assoc($query))
         self::$_rows[$row['id']] = $row;
     }
@@ -60,7 +60,7 @@ class Car
   {
     if ($this->id == 0)
       return false;
-    mysql_query('delete from cars where id=\''.mysql_real_escape_string($this->id).'\'');
+    mysql_query('update cars set deleted=1 where id=\''.mysql_real_escape_string($this->id).'\'');
     self::getRows(true);
     return mysql_affected_rows()>0;
   }

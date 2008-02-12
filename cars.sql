@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: db.example.com
--- Generation Time: Feb 12, 2008 at 05:25 AM
+-- Generation Time: Feb 12, 2008 at 09:56 PM
 -- Server version: 5.1.11
 -- PHP Version: 5.2.3
 
@@ -21,6 +21,7 @@ SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 
 CREATE TABLE IF NOT EXISTS `cars` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
+  `deleted` tinyint(1) NOT NULL DEFAULT '0',
   `price` int(6) NOT NULL,
   `make` varchar(255) NOT NULL,
   `model` varchar(255) NOT NULL,

@@ -86,21 +86,23 @@ $(document).ready(function() {
     $(this).attr('src','i/dialog-titlebar-close.png');
   });
   $('.delete_form').livequery('submit', function() {
-    form = $(this);
-    $.ajax({
-      type: 'POST',
-      url: 'delete.php',
-      data: {
-        'js': 'true',
-        'id': form.children('input[name=id]').val()
-      },
-      success: function(data) {
-        eval('data = '+data);
-        if (data['deleted'])
-          form.parent().parent().remove();
-        return false;
-      }
-    });
+    if (confirm('Are you sure you want to remove this car?')) {
+      form = $(this);
+      $.ajax({
+        type: 'POST',
+        url: 'delete.php',
+        data: {
+          'js': 'true',
+          'id': form.children('input[name=id]').val()
+        },
+        success: function(data) {
+          eval('data = '+data);
+          if (data['deleted'])
+            form.parent().parent().remove();
+          return false;
+        }
+      });
+    }
     return false;
   });
 });
