@@ -12,6 +12,7 @@ $(document).ready(function() {
       type: 'POST',
       url: 'add.php',
       data: {
+        'js': 'true',
         'price': $('#add form input[name=price]').val(),
         'make': $('#add form input[name=make]').val(),
         'model': $('#add form input[name=model]').val(),
@@ -22,6 +23,7 @@ $(document).ready(function() {
         'dealer': $('#add form input[name=dealer]').val()
       },
       success: function(data) {
+        eval('data = '+data);
         row = $(document.createElement('tr'));
         row.append($(document.createElement('td')).html(data['price']));
         row.append($(document.createElement('td')).html(data['make']));
@@ -44,8 +46,10 @@ $(document).ready(function() {
         $('#cars tbody').append(row);
         $('#add_form input[type=submit]').attr('disabled','');
         $('#add').dialogClose();
+        return false;
       }
     });
+    return false;
   });
   $.each($('.plus_button'), function(i, el) {
     contents = $(el).html();
