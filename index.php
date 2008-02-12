@@ -32,7 +32,7 @@ $cars = Car::findAll();
         </tr>
       </thead>
       <tbody>
-        <?php foreach ($cars as $car) { $carfax=file_exists('carfax/'.$car->vin.'.html'); ?>
+<?php foreach ($cars as $car) { $carfax=file_exists('carfax/'.$car->vin.'.html'); ?>
         <tr>
           <td><?= h($car->price) ?></td>
           <td><?= h($car->make) ?></td>
@@ -42,7 +42,7 @@ $cars = Car::findAll();
           <td><? if ($carfax) { ?><a href="carfax/<?= h($car->vin) ?>.html"><? } ?><?= h($car->vin) ?><? if ($carfax) { ?></a><? } ?></td>
           <td><a href="<?= h($car->uri) ?>"><?= h($car->dealer) ?></a></td>
         </tr>
-        <?php } ?>
+<?php } ?>
       </tbody>
     </table>
     <div id="add">
