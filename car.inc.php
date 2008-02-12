@@ -7,17 +7,8 @@ class Car
   {
     self::getRows();
     if (self::$_rows[$id])
-    {
       $this->id = $id;
-      $this->price = self::$_rows[$this->id]['price'];
-      $this->make = self::$_rows[$this->id]['make'];
-      $this->model = self::$_rows[$this->id]['model'];
-      $this->year = self::$_rows[$this->id]['year'];
-      $this->mileage = self::$_rows[$this->id]['mileage'];
-      $this->vin = self::$_rows[$this->id]['vin'];
-      $this->uri = self::$_rows[$this->id]['uri'];
-      $this->dealer = self::$_rows[$this->id]['dealer'];
-    }
+    $this->loadVariables(false);
   }
   public static function findAll()
   {
@@ -54,7 +45,7 @@ class Car
     self::$_rows[$this->id]['uri'] = $this->uri;
     self::$_rows[$this->id]['dealer'] = $this->dealer;
     mysql_query('replace into cars (`'.implode('`, `',array_map('mysql_real_escape_string',array_keys(self::$_rows[$this->id]))).'`) values (\''.implode("', '",array_map('mysql_real_escape_string',self::$_rows[$this->id])).'\')');
-    self::getRows(true);
+    $this->loadVariables();
   }
   public function delete()
   {
@@ -63,6 +54,22 @@ class Car
     mysql_query('update cars set deleted=1 where id=\''.mysql_real_escape_string($this->id).'\'');
     self::getRows(true);
     return mysql_affected_rows()>0;
+  }
+  private function loadVariables($getrows = true)
+  {
+    if ($getrows)
+      self::getRows(true);
+    if (self::$_rows[$this->id])
+    {
+      $this->price = self::$_rows[$this->id]['price'];
+      $this->make = self::$_rows[$this->id]['make'];
+      $this->model = self::$_rows[$this->id]['model'];
+      $this->year = self::$_rows[$this->id]['year'];
+      $this->mileage = self::$_rows[$this->id]['mileage'];
+      $this->vin = self::$_rows[$this->id]['vin'];
+      $this->uri = self::$_rows[$this->id]['uri'];
+      $this->dealer = self::$_rows[$this->id]['dealer'];
+    }
   }
 }
 ?>
