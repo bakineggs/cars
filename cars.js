@@ -24,42 +24,36 @@ $(document).ready(function() {
       },
       success: function(data) {
         eval('data = '+data);
-        row = $(document.createElement('tr'))
+        if (data['carfax'])
+          vinrow = $(document.createElement('td'))
+            .append($(document.createElement('a'))
+              .attr('href', 'carfax/'+data['vin']+'.html')
+              .html(data['vin']));
+        else
+          vinrow = $(document.createElement('td')).html(data['vin']);
+        $('#cars tbody').append($(document.createElement('tr'))
           .append($(document.createElement('td')).html(data['price']))
           .append($(document.createElement('td')).html(data['make']))
           .append($(document.createElement('td')).html(data['model']))
           .append($(document.createElement('td')).html(data['year']))
-          .append($(document.createElement('td')).html(data['mileage']));
-        if (data['carfax'])
-        {
-          anchor = $(document.createElement('a'))
-            .attr('href', 'carfax/'+data['vin']+'.html')
-            .html(data['vin']);
-          row.append($(document.createElement('td')).append(anchor));
-        }
-        else
-          row.append($(document.createElement('td')).html(data['vin']));
-        anchor = $(document.createElement('a'))
-          .attr('href', data['uri'])
-          .html(data['dealer']);
-        row.append($(document.createElement('td')).append(anchor));
-        form = $(document.createElement('form'))
-          .attr('method', 'post')
-          .attr('action', 'delete.php')
-          .addClass('delete_form');
-        input = $(document.createElement('input'))
-          .attr('type', 'hidden')
-          .attr('name', 'id')
-          .val(data['id']);
-        form.append(input);
-        input = $(document.createElement('input'))
-          .attr('type', 'image')
-          .attr('src', 'i/dialog-titlebar-close.png')
-          .attr('alt', 'Delete')
-          .val('Delete');
-        form.append(input);
-        row.append($(document.createElement('td')).append(form));
-        $('#cars tbody').append(row);
+          .append($(document.createElement('td')).html(data['mileage']))
+          .append(vinrow)
+          .append($(document.createElement('td')).append($(document.createElement('a'))
+            .attr('href', data['uri'])
+            .html(data['dealer'])))
+          .append($(document.createElement('td')).append($(document.createElement('form'))
+            .attr('method', 'post')
+            .attr('action', 'delete.php')
+            .addClass('delete_form')
+            .append($(document.createElement('input'))
+              .attr('type', 'hidden')
+              .attr('name', 'id')
+              .val(data['id']))
+            .append($(document.createElement('input'))
+              .attr('type', 'image')
+              .attr('src', 'i/dialog-titlebar-close.png')
+              .attr('alt', 'Delete')
+              .val('Delete')))));
         $('#add_form input[type=submit]').attr('disabled','');
         $('#add').dialogClose();
         return false;
