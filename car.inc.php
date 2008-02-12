@@ -6,7 +6,7 @@ class Car
   public function __construct($id = 0)
   {
     self::getRows();
-    if (self::$_rows[$this->id])
+    if (self::$_rows[$id])
     {
       $this->id = $id;
       $this->price = self::$_rows[$this->id]['price'];
