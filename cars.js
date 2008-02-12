@@ -1,8 +1,7 @@
 $(document).ready(function() {
   $('#cars').tablesorter();
   $('#add h2').remove();
-  $('#add').dialog({title: 'Add Car', height: $('#add').height()+60});
-  $('#add').dialogClose();
+  $('#add').dialog({title: 'Add Car', height: $('#add').height()+60}).dialogClose();
   $('#add_link_container').css('display', 'block');
   $('#add_link').click(function() {
     $('#add').dialogOpen();
