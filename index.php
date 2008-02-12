@@ -1,8 +1,8 @@
 <?php
 function h($val) { return htmlentities($val, ENT_QUOTES); }
 require 'car.inc.php';
-mysql_connect('db.example.com', 'example_user', 'some_password');
-$dbh = mysql_select_db('some_database');
+$dbh = mysql_connect('db.example.com', 'example_user', 'some_password');
+mysql_select_db('some_database');
 $cars = Car::findAll();
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
@@ -31,14 +31,14 @@ $cars = Car::findAll();
         </tr>
       </thead>
       <tbody>
-        <?php foreach ($cars as $car) { ?>
+        <?php foreach ($cars as $car) { $carfax=file_exists('carfax/'.$car->vin.'.html'); ?>
         <tr>
           <td><?= h($car->price) ?></td>
           <td><?= h($car->make) ?></td>
           <td><?= h($car->model) ?></td>
           <td><?= h($car->year) ?></td>
           <td><?= h($car->mileage) ?></td>
-          <td><a href="carfax/<?= h($car->vin) ?>.html"><?= h($car->vin) ?></a></td>
+          <td><? if ($carfax) { ?><a href="carfax/<?= h($car->vin) ?>.html"><? } ?><?= h($car->vin) ?><? if ($carfax) { ?></a><? } ?></td>
           <td><a href="<?= h($car->uri) ?>"><?= h($car->dealer) ?></a></td>
         </tr>
         <?php } ?>
