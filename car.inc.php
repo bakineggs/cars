@@ -27,9 +27,9 @@ class Car
       $cars[] = new Car($id);
     return $cars;
   }
-  private static function getRows()
+  private static function getRows($force = false)
   {
-    if (!sizeof(self::$_rows))
+    if (!sizeof(self::$_rows) || $force)
     {
       $query = mysql_query("select * from cars");
       while ($row = mysql_fetch_assoc($query))
@@ -54,7 +54,7 @@ class Car
     self::$_rows[$this->id]['uri'] = $this->uri;
     self::$_rows[$this->id]['dealer'] = $this->dealer;
     mysql_query('replace into cars (`'.implode('`, `',array_map('mysql_real_escape_string',array_keys(self::$_rows[$this->id]))).'`) values (\''.implode("', '",array_map('mysql_real_escape_string',self::$_rows[$this->id])).'\')');
-    self::getRows();
+    self::getRows(true);
   }
 }
 ?>
