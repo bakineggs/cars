@@ -89,7 +89,7 @@ $cars = Car::findAll();
     </div>
     <div id="add_link_container">
       <h2>
-        <a id="add_link">Add Car</a>
+        <a id="add_link" class="plus_button">Add Car</a>
       </h2>
     </div>
   </body>
