@@ -6,9 +6,8 @@
   color: #00f;
   cursor: pointer;
 }
-.real_plus_button:hover {
+.real_plus_button {
   cursor: pointer;
-  text-decoration: underline;
 }
 .real_plus_button .top_left {
   float: left;
@@ -24,6 +23,9 @@
   background: url(images/button.gif) no-repeat right bottom;
 }
 .real_plus_button .plus {
-  padding: 5px 9px 3px 22px;
+  padding: 4px 9px 3px 22px;
   background: url(images/plus.gif) no-repeat 9px center;
+}
+.real_plus_button .plus:hover {
+  text-decoration: underline;
 }
