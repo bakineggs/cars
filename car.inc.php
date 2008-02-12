@@ -9,14 +9,14 @@ class Car
     $this->id = $id;
     if (self::$_rows[$this->id])
     {
-      $this->price = $rows[$this->id]['price'];
-      $this->make = $rows[$this->id]['make'];
-      $this->model = $rows[$this->id]['model'];
-      $this->year = $rows[$this->id]['year'];
-      $this->mileage = $rows[$this->id]['mileage'];
-      $this->vin = $rows[$this->id]['vin'];
-      $this->uri = $rows[$this->id]['uri'];
-      $this->dealer = $rows[$this->id]['dealer'];
+      $this->price = self::$_rows[$this->id]['price'];
+      $this->make = self::$_rows[$this->id]['make'];
+      $this->model = self::$_rows[$this->id]['model'];
+      $this->year = self::$_rows[$this->id]['year'];
+      $this->mileage = self::$_rows[$this->id]['mileage'];
+      $this->vin = self::$_rows[$this->id]['vin'];
+      $this->uri = self::$_rows[$this->id]['uri'];
+      $this->dealer = self::$_rows[$this->id]['dealer'];
     }
   }
   public static function findAll()
