@@ -5,13 +5,8 @@ class Car
   public $id, $price, $make, $model, $year, $mileage, $vin, $uri, $dealer;
   public function __construct($id = 0)
   {
+    self::getRows();
     $this->id = $id;
-    if (!sizeof(self::$_rows))
-    {
-      $query = mysql_query("select * from cars");
-      while ($row = mysql_fetch_assoc($query))
-        self::$_rows[$row['id']] = $row;
-    }
     if (self::$_rows[$this->id])
     {
       $this->price = $rows[$this->id]['price'];
@@ -22,6 +17,23 @@ class Car
       $this->vin = $rows[$this->id]['vin'];
       $this->uri = $rows[$this->id]['uri'];
       $this->dealer = $rows[$this->id]['dealer'];
+    }
+  }
+  public static function findAll()
+  {
+    self::getRows();
+    $cars = array();
+    foreach (array_keys(self::$_rows) as $id)
+      $cars[] = new Car($id);
+    return $cars;
+  }
+  private static function getRows()
+  {
+    if (!sizeof(self::$_rows))
+    {
+      $query = mysql_query("select * from cars");
+      while ($row = mysql_fetch_assoc($query))
+        self::$_rows[$row['id']] = $row;
     }
   }
   public function save()
