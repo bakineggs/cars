@@ -94,7 +94,7 @@ $(document).ready(function() {
         url: 'delete.php',
         data: {
           'js': 'true',
-          'id': form.children('input[name=id]').val()
+          'id': form.children('p').children('input[name=id]').val()
         },
         success: function(data) {
           eval('data = '+data);
