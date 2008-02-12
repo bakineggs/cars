@@ -39,7 +39,7 @@ $cars = Car::findAll();
           <td><?= h($car->year) ?></td>
           <td><?= h($car->mileage) ?></td>
           <td><a href="carfax/<?= h($car->vin) ?>.html"><?= h($car->vin) ?></a></td>
-          <td><a href="<?= h($uri) ?>"><?= h($car->dealer) ?></a></td>
+          <td><a href="<?= h($car->uri) ?>"><?= h($car->dealer) ?></a></td>
         </tr>
         <?php } ?>
       </tbody>
