@@ -24,39 +24,39 @@ $(document).ready(function() {
       },
       success: function(data) {
         eval('data = '+data);
-        row = $(document.createElement('tr'));
-        row.append($(document.createElement('td')).html(data['price']));
-        row.append($(document.createElement('td')).html(data['make']));
-        row.append($(document.createElement('td')).html(data['model']));
-        row.append($(document.createElement('td')).html(data['year']));
-        row.append($(document.createElement('td')).html(data['mileage']));
+        row = $(document.createElement('tr'))
+          .append($(document.createElement('td')).html(data['price']))
+          .append($(document.createElement('td')).html(data['make']))
+          .append($(document.createElement('td')).html(data['model']))
+          .append($(document.createElement('td')).html(data['year']))
+          .append($(document.createElement('td')).html(data['mileage']));
         if (data['carfax'])
         {
-          anchor = $(document.createElement('a'));
-          anchor.attr('href', 'carfax/'+data['vin']+'.html');
-          anchor.html(data['vin']);
+          anchor = $(document.createElement('a'))
+            .attr('href', 'carfax/'+data['vin']+'.html')
+            .html(data['vin']);
           row.append($(document.createElement('td')).append(anchor));
         }
         else
           row.append($(document.createElement('td')).html(data['vin']));
-        anchor = $(document.createElement('a'));
-        anchor.attr('href', data['uri']);
-        anchor.html(data['dealer']);
+        anchor = $(document.createElement('a'))
+          .attr('href', data['uri'])
+          .html(data['dealer']);
         row.append($(document.createElement('td')).append(anchor));
-        form = $(document.createElement('form'));
-        form.attr('method', 'post');
-        form.attr('action', 'delete.php');
-        form.addClass('delete_form');
-        input = $(document.createElement('input'));
-        input.attr('type', 'hidden');
-        input.attr('name', 'id');
-        input.val(data['id']);
+        form = $(document.createElement('form'))
+          .attr('method', 'post')
+          .attr('action', 'delete.php')
+          .addClass('delete_form');
+        input = $(document.createElement('input'))
+          .attr('type', 'hidden')
+          .attr('name', 'id')
+          .val(data['id']);
         form.append(input);
-        input = $(document.createElement('input'));
-        input.attr('type', 'image');
-        input.attr('src', 'i/dialog-titlebar-close.png');
-        input.attr('alt', 'Delete');
-        input.val('Delete');
+        input = $(document.createElement('input'))
+          .attr('type', 'image')
+          .attr('src', 'i/dialog-titlebar-close.png')
+          .attr('alt', 'Delete')
+          .val('Delete');
         form.append(input);
         row.append($(document.createElement('td')).append(form));
         $('#cars tbody').append(row);
@@ -69,7 +69,21 @@ $(document).ready(function() {
   });
   $.each($('.plus_button'), function(i, el) {
     contents = $(el).html();
-    $(el).html('').removeClass('plus_button').addClass('real_plus_button').append($(document.createElement('div')).addClass('top_left').append($(document.createElement('div')).addClass('top_right').append($(document.createElement('div')).addClass('bottom_left').append($(document.createElement('div')).addClass('bottom_right').append($(document.createElement('div')).addClass('plus').html(contents))))));
+    $(el)
+      .html('')
+      .removeClass('plus_button')
+      .addClass('real_plus_button')
+      .append($(document.createElement('div'))
+        .addClass('top_left')
+        .append($(document.createElement('div'))
+          .addClass('top_right')
+          .append($(document.createElement('div'))
+            .addClass('bottom_left')
+            .append($(document.createElement('div'))
+              .addClass('bottom_right')
+              .append($(document.createElement('div'))
+                .addClass('plus')
+                .html(contents))))));
   });
   $('.delete_form input[type=image]').livequery('mouseover', function() {
     $(this).attr('src','i/dialog-titlebar-close-hover.png');
