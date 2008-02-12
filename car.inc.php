@@ -56,5 +56,13 @@ class Car
     mysql_query('replace into cars (`'.implode('`, `',array_map('mysql_real_escape_string',array_keys(self::$_rows[$this->id]))).'`) values (\''.implode("', '",array_map('mysql_real_escape_string',self::$_rows[$this->id])).'\')');
     self::getRows(true);
   }
+  public function delete()
+  {
+    if ($this->id == 0)
+      return false;
+    mysql_query('delete from cars where id=\''.mysql_real_escape_string($this->id).'\'');
+    self::getRows(true);
+    return mysql_affected_rows()>0;
+  }
 }
 ?>
