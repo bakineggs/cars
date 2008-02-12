@@ -41,6 +41,12 @@ $cars = Car::findAll();
           <td><?= h($car->mileage) ?></td>
           <td><? if ($carfax) { ?><a href="carfax/<?= h($car->vin) ?>.html"><? } ?><?= h($car->vin) ?><? if ($carfax) { ?></a><? } ?></td>
           <td><a href="<?= h($car->uri) ?>"><?= h($car->dealer) ?></a></td>
+          <td>
+            <form method="post" action="delete.php" class="delete_form">
+              <input type="hidden" name="id" value="<?= h($car->id) ?>" />
+              <input type="image" src="i/dialog-titlebar-close.png" value="Delete" alt="Delete" />
+            </form>
+          </td>
         </tr>
 <?php } ?>
       </tbody>

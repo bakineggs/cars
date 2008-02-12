@@ -43,6 +43,22 @@ $(document).ready(function() {
         anchor.attr('href', data['uri']);
         anchor.html(data['dealer']);
         row.append($(document.createElement('td')).append(anchor));
+        form = $(document.createElement('form'));
+        form.attr('method', 'post');
+        form.attr('action', 'delete.php');
+        form.addClass('delete_form');
+        input = $(document.createElement('input'));
+        input.attr('type', 'hidden');
+        input.attr('name', 'id');
+        input.val(data['id']);
+        form.append(input);
+        input = $(document.createElement('input'));
+        input.attr('type', 'image');
+        input.attr('src', 'i/dialog-titlebar-close.png');
+        input.attr('alt', 'Delete');
+        input.val('Delete');
+        form.append(input);
+        row.append($(document.createElement('td')).append(form));
         $('#cars tbody').append(row);
         $('#add_form input[type=submit]').attr('disabled','');
         $('#add').dialogClose();
@@ -54,5 +70,13 @@ $(document).ready(function() {
   $.each($('.plus_button'), function(i, el) {
     contents = $(el).html();
     $(el).html('').removeClass('plus_button').addClass('real_plus_button').append($(document.createElement('div')).addClass('top_left').append($(document.createElement('div')).addClass('top_right').append($(document.createElement('div')).addClass('bottom_left').append($(document.createElement('div')).addClass('bottom_right').append($(document.createElement('div')).addClass('plus').html(contents))))));
+  });
+  $.each($('.delete_form input[type=image]'), function(i, el) {
+    $(el).mouseover(function() {
+      $(this).attr('src','i/dialog-titlebar-close-hover.png');
+    });
+    $(el).mouseout(function() {
+      $(this).attr('src','i/dialog-titlebar-close.png');
+    });
   });
 });

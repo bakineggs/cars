@@ -15,6 +15,7 @@ $car->dealer = $_POST['dealer'];
 $car->save();
 if ($_POST['js']=='true')
   echo json_encode(array(
+    'id' => $car->id,
     'price' => $car->price,
     'make' => $car->make,
     'model' => $car->model,
