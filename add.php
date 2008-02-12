@@ -13,6 +13,19 @@ $car->vin = $_POST['vin'];
 $car->uri = $_POST['uri'];
 $car->dealer = $_POST['dealer'];
 $car->save();
-header('Location: index.php');
+if ($_POST['js']=='true')
+  echo json_encode(array(
+    'price' => $car->price,
+    'make' => $car->make,
+    'model' => $car->model,
+    'year' => $car->year,
+    'mileage' => $car->mileage,
+    'vin' => $car->vin,
+    'carfax' => file_exists('carfax/'.$car->vin.'.html'),
+    'uri' => $car->uri,
+    'dealer' => $car->dealer
+  ));
+else
+  header('Location: index.php');
 mysql_close($dbh);
 ?>

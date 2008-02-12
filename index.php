@@ -11,12 +11,13 @@ $cars = Car::findAll();
     <title>Cars</title>
     <script type="text/javascript" src="jquery-1.2.3.min.js"></script>
     <script type="text/javascript" src="jquery.ui-1.0.min.js"></script>
-    <script type="text/javascript">
-      $(document).ready(function() { $('#cars').tablesorter(); });
-    </script>
+    <script type="text/javascript" src="cars.js"></script>
     <link rel="stylesheet" type="text/css" href="flora.tablesorter.css" />
+    <link rel="stylesheet" type="text/css" href="flora.resizable.css" />
+    <link rel="stylesheet" type="text/css" href="flora.dialog.css" />
+    <link rel="stylesheet" type="text/css" href="style.css" />
   </head>
-  <body>
+  <body class="flora">
     <h1>Cars</h1>
     <table id="cars" class="tablesorter">
       <thead>
@@ -46,7 +47,7 @@ $cars = Car::findAll();
     </table>
     <div id="add">
       <h2>Add Car</h2>
-      <form method="post" action="add.php">
+      <form id="add_form" method="post" action="add.php">
         <table>
           <tr>
             <td>Price</td>
@@ -85,6 +86,11 @@ $cars = Car::findAll();
           </tr>
         </table>
       </form>
+    </div>
+    <div id="add_link_container">
+      <h2>
+        <a id="add_link">Add Car</a>
+      </h2>
     </div>
   </body>
 </html>
