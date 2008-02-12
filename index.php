@@ -49,41 +49,43 @@ $cars = Car::findAll();
       <h2>Add Car</h2>
       <form id="add_form" method="post" action="add.php">
         <table>
-          <tr>
-            <td>Price</td>
-            <td><input type="text" name="price" /></td>
-          </tr>
-          <tr>
-            <td>Make</td>
-            <td><input type="text" name="make" /></td>
-          </tr>
-          <tr>
-            <td>Model</td>
-            <td><input type="text" name="model" /></td>
-          </tr>
-          <tr>
-            <td>Year</td>
-            <td><input type="text" name="year" /></td>
-          </tr>
-          <tr>
-            <td>Mileage</td>
-            <td><input type="text" name="mileage" /></td>
-          </tr>
-          <tr>
-            <td>VIN</td>
-            <td><input type="text" name="vin" /></td>
-          </tr>
-          <tr>
-            <td>Website</td>
-            <td><input type="text" name="uri" /></td>
-          </tr>
-          <tr>
-            <td>Dealer</td>
-            <td><input type="text" name="dealer" /></td>
-          </tr>
-          <tr>
-            <td colspan="2" align="right"><input type="submit" value="Add" /></td>
-          </tr>
+          <tbody>
+            <tr>
+              <td>Price</td>
+              <td><input type="text" name="price" /></td>
+            </tr>
+            <tr>
+              <td>Make</td>
+              <td><input type="text" name="make" /></td>
+            </tr>
+            <tr>
+              <td>Model</td>
+              <td><input type="text" name="model" /></td>
+            </tr>
+            <tr>
+              <td>Year</td>
+              <td><input type="text" name="year" /></td>
+            </tr>
+            <tr>
+              <td>Mileage</td>
+              <td><input type="text" name="mileage" /></td>
+            </tr>
+            <tr>
+              <td>VIN</td>
+              <td><input type="text" name="vin" /></td>
+            </tr>
+            <tr>
+              <td>Website</td>
+              <td><input type="text" name="uri" /></td>
+            </tr>
+            <tr>
+              <td>Dealer</td>
+              <td><input type="text" name="dealer" /></td>
+            </tr>
+            <tr>
+              <td colspan="2" align="right"><input type="submit" value="Add" /></td>
+            </tr>
+          </tbody>
         </table>
       </form>
     </div>
