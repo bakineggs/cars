@@ -41,7 +41,7 @@ $(document).ready(function() {
           .append($(document.createElement('td')).append($(document.createElement('a'))
             .attr('href', data['uri'])
             .html(data['dealer'])))
-          .append($(document.createElement('td')).append($(document.createElement('form'))
+          .append($(document.createElement('td')).addClass('narrow').append($(document.createElement('form'))
             .attr('method', 'post')
             .attr('action', 'delete.php')
             .addClass('delete_form')

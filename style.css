@@ -33,3 +33,6 @@ p {
 .real_plus_button .plus:hover {
   text-decoration: underline;
 }
+.narrow {
+  width: 1px;
+}
