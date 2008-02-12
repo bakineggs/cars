@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: db.example.com
--- Generation Time: Feb 12, 2008 at 04:34 AM
+-- Generation Time: Feb 12, 2008 at 05:25 AM
 -- Server version: 5.1.11
 -- PHP Version: 5.2.3
 
@@ -27,7 +27,7 @@ CREATE TABLE IF NOT EXISTS `cars` (
   `year` int(4) NOT NULL,
   `mileage` int(6) NOT NULL,
   `vin` varchar(17) NOT NULL,
-  `uri` varchar(255) NOT NULL,
+  `uri` varchar(1024) NOT NULL,
   `dealer` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8;

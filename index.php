@@ -9,10 +9,16 @@ $cars = Car::findAll();
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
   <head>
     <title>Cars</title>
+    <script type="text/javascript" src="jquery-1.2.3.min.js"></script>
+    <script type="text/javascript" src="jquery.ui-1.0.min.js"></script>
+    <script type="text/javascript">
+      $(document).ready(function() { $('#cars').tablesorter(); });
+    </script>
+    <link rel="stylesheet" type="text/css" href="flora.tablesorter.css" />
   </head>
   <body>
     <h1>Cars</h1>
-    <table>
+    <table id="cars" class="tablesorter">
       <thead>
         <tr>
           <th>Price</th>
