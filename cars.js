@@ -77,4 +77,22 @@ $(document).ready(function() {
   $('.delete_form input[type=image]').livequery('mouseout', function() {
     $(this).attr('src','i/dialog-titlebar-close.png');
   });
+  $('.delete_form').livequery('submit', function() {
+    form = $(this);
+    $.ajax({
+      type: 'POST',
+      url: 'delete.php',
+      data: {
+        'js': 'true',
+        'id': form.children('input[name=id]').val()
+      },
+      success: function(data) {
+        eval('data = '+data);
+        if (data['deleted'])
+          form.parent().parent().remove();
+        return false;
+      }
+    });
+    return false;
+  });
 });
