@@ -71,12 +71,10 @@ $(document).ready(function() {
     contents = $(el).html();
     $(el).html('').removeClass('plus_button').addClass('real_plus_button').append($(document.createElement('div')).addClass('top_left').append($(document.createElement('div')).addClass('top_right').append($(document.createElement('div')).addClass('bottom_left').append($(document.createElement('div')).addClass('bottom_right').append($(document.createElement('div')).addClass('plus').html(contents))))));
   });
-  $.each($('.delete_form input[type=image]'), function(i, el) {
-    $(el).mouseover(function() {
-      $(this).attr('src','i/dialog-titlebar-close-hover.png');
-    });
-    $(el).mouseout(function() {
-      $(this).attr('src','i/dialog-titlebar-close.png');
-    });
+  $('.delete_form input[type=image]').livequery('mouseover', function() {
+    $(this).attr('src','i/dialog-titlebar-close-hover.png');
+  });
+  $('.delete_form input[type=image]').livequery('mouseout', function() {
+    $(this).attr('src','i/dialog-titlebar-close.png');
   });
 });

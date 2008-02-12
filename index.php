@@ -10,6 +10,7 @@ $cars = Car::findAll();
   <head>
     <title>Cars</title>
     <script type="text/javascript" src="jquery-1.2.3.min.js"></script>
+    <script type="text/javascript" src="jquery.livequery.min.js"></script>
     <script type="text/javascript" src="jquery.ui-1.0.min.js"></script>
     <script type="text/javascript" src="cars.js"></script>
     <link rel="stylesheet" type="text/css" href="flora.tablesorter.css" />
