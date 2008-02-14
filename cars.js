@@ -140,7 +140,7 @@ function addEditLink(cell)
 }
 function editCell(cell)
 {
-  cell.children('img.edit').remove();
+  cell.parent().children().children('img.edit').remove();
   tdClass = cell.attr('class');
   switch(tdClass)
   {
@@ -212,7 +212,6 @@ function editCell(cell)
 }
 function saveRow(row, values)
 {
-  row.children().children('img.edit').remove();
   data = $.extend({
     'js': true,
     'price': row.children('.price').html(),
