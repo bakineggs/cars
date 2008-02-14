@@ -27,6 +27,21 @@ class Car
         self::$_rows[$row['id']] = $row;
     }
   }
+  public function jsonEncode()
+  {
+    return json_encode(array(
+      'id' => $this->id,
+      'price' => $this->price,
+      'make' => $this->make,
+      'model' => $this->model,
+      'year' => $this->year,
+      'mileage' => $this->mileage,
+      'vin' => $this->vin,
+      'carfax' => file_exists('carfax/'.$this->vin.'.html'),
+      'uri' => $this->uri,
+      'dealer' => $this->dealer
+    ));
+  }
   public function save()
   {
     if ($this->id == 0)
