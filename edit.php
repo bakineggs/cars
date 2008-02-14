@@ -6,7 +6,10 @@ mysql_select_db('some_database');
 $car = new Car($_GET['id']);
 if ($car->id == 0)
 {
-  header('Location:index.php');
+  if ($_POST['js'] == 'true')
+    echo $car->jsonEncode();
+  else
+    header('Location:index.php');
   exit;
 }
 if ($_POST)
@@ -20,7 +23,10 @@ if ($_POST)
   $car->uri = $_POST['uri'];
   $car->dealer = $_POST['dealer'];
   $car->save();
-  header('Location:index.php');
+  if ($_POST['js'] == 'true')
+    echo $car->jsonEncode();
+  else
+    header('Location:index.php');
   exit;
 }
 ?>

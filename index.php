@@ -34,7 +34,7 @@ $cars = Car::findAll();
       </thead>
       <tbody>
 <?php foreach ($cars as $car) { $carfax=file_exists('carfax/'.$car->vin.'.html'); ?>
-        <tr>
+        <tr id="<?= h($car->id) ?>">
           <td class="price"><?= h($car->price) ?></td>
           <td class="make"><?= h($car->make) ?></td>
           <td class="model"><?= h($car->model) ?></td>
@@ -42,12 +42,12 @@ $cars = Car::findAll();
           <td class="mileage"><?= h($car->mileage) ?></td>
           <td class="vin"><? if ($carfax) { ?><a href="carfax/<?= h($car->vin) ?>.html"><? } ?><?= h($car->vin) ?><? if ($carfax) { ?></a><? } ?></td>
           <td class="dealer"><a href="<?= h($car->uri) ?>"><?= h($car->dealer) ?></a></td>
-          <td class="edit"><a href="edit.php?id=<?= h($car->id) ?>">Edit</a></td>
+          <td class="edit"><a href="edit.php?id=<?= h($car->id) ?>"><img src="images/edit.png" alt="Edit" /></a></td>
           <td class="delete">
             <form method="post" action="delete.php" class="delete_form">
               <p>
                 <input type="hidden" name="id" value="<?= h($car->id) ?>" />
-                <input type="image" src="i/dialog-titlebar-close.png" value="Delete" alt="Delete" />
+                <input type="image" src="images/delete.png" value="Delete" alt="Delete" />
               </p>
             </form>
           </td>

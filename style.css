@@ -2,6 +2,9 @@ p {
   padding: 0;
   margin: 0;
 }
+img {
+  border: 0;
+}
 #add_link_container {
   display: none;
 }
@@ -33,6 +36,10 @@ p {
 .real_plus_button .plus:hover {
   text-decoration: underline;
 }
-#cars .edit, #cars .delete {
+#cars td.edit, #cars td.delete {
   width: 1px;
+}
+img.edit {
+  cursor: pointer;
+  float: right;
 }
