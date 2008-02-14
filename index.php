@@ -35,15 +35,15 @@ $cars = Car::findAll();
       <tbody>
 <?php foreach ($cars as $car) { $carfax=file_exists('carfax/'.$car->vin.'.html'); ?>
         <tr>
-          <td><?= h($car->price) ?></td>
-          <td><?= h($car->make) ?></td>
-          <td><?= h($car->model) ?></td>
-          <td><?= h($car->year) ?></td>
-          <td><?= h($car->mileage) ?></td>
-          <td><? if ($carfax) { ?><a href="carfax/<?= h($car->vin) ?>.html"><? } ?><?= h($car->vin) ?><? if ($carfax) { ?></a><? } ?></td>
-          <td><a href="<?= h($car->uri) ?>"><?= h($car->dealer) ?></a></td>
-          <td class="narrow"><a href="edit.php?id=<?= h($car->id) ?>">Edit</a></td>
-          <td class="narrow">
+          <td class="price"><?= h($car->price) ?></td>
+          <td class="make"><?= h($car->make) ?></td>
+          <td class="model"><?= h($car->model) ?></td>
+          <td class="year"><?= h($car->year) ?></td>
+          <td class="mileage"><?= h($car->mileage) ?></td>
+          <td class="vin"><? if ($carfax) { ?><a href="carfax/<?= h($car->vin) ?>.html"><? } ?><?= h($car->vin) ?><? if ($carfax) { ?></a><? } ?></td>
+          <td class="dealer"><a href="<?= h($car->uri) ?>"><?= h($car->dealer) ?></a></td>
+          <td class="edit"><a href="edit.php?id=<?= h($car->id) ?>">Edit</a></td>
+          <td class="delete">
             <form method="post" action="delete.php" class="delete_form">
               <p>
                 <input type="hidden" name="id" value="<?= h($car->id) ?>" />
