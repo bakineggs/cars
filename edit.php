@@ -21,6 +21,7 @@ if ($_POST)
   $car->dealer = $_POST['dealer'];
   $car->save();
   header('Location:index.php');
+  exit;
 }
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
