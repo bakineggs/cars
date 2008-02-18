@@ -99,11 +99,6 @@ $cars = Car::findAll();
         </table>
       </form>
     </div>
-    <div id="add_link_container">
-      <h2>
-        <a id="add_link" class="plus_button">Add Car</a>
-      </h2>
-    </div>
   </body>
 </html>
 <?php

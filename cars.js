@@ -2,6 +2,12 @@ $(document).ready(function() {
   $('#cars').tablesorter();
   $('#add h2').remove();
   $('#add').dialog({title: 'Add Car', height: $('#add').height()+60}).dialogClose();
+  $('body')
+    .append($(document.createElement('h2'))
+      .append($(document.createElement('a'))
+        .addClass('plus_button')
+        .attr('id', 'add_link')
+        .html('Add Car')));
   $('#add_link_container').css('display', 'block');
   $('#add_link').click(function() {
     $('#add').dialogOpen();

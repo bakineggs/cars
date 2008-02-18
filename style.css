@@ -5,9 +5,6 @@ p {
 img {
   border: 0;
 }
-#add_link_container {
-  display: none;
-}
 .plus_button {
   text-decoration: underline;
   color: #00f;
