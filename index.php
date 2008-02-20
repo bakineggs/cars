@@ -17,6 +17,7 @@ $cars = Car::findAll();
     <link rel="stylesheet" type="text/css" href="flora.resizable.css" />
     <link rel="stylesheet" type="text/css" href="flora.dialog.css" />
     <link rel="stylesheet" type="text/css" href="style.css" />
+    <link rel="stylesheet" type="text/css" href="print.css" media="print" />
   </head>
   <body class="flora">
     <h1>Cars</h1>
