@@ -8,7 +8,6 @@ $(document).ready(function() {
         .addClass('plus_button')
         .attr('id', 'add_link')
         .html('Add Car')));
-  $('#add_link_container').css('display', 'block');
   $('#add_link').click(function() {
     $('#add').dialogOpen();
   });
