@@ -1,3 +1,7 @@
 #add, #add_link, .edit, .delete {
   display: none;
 }
+a, a:active, a:visited {
+  color: #000;
+  text-decoration: none;
+}
