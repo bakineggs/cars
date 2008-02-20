@@ -1,5 +1,5 @@
 $(document).ready(function() {
-  $('#cars').tablesorter();
+  $('#cars').tablesorter({ sortList: [ [0,0] ] });
   $('#add h2').remove();
   $('#add').dialog({title: 'Add Car', height: $('#add').height()+60}).dialogClose();
   $('body')
