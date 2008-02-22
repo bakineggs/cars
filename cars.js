@@ -4,7 +4,7 @@ $(document).ready(function() {
   $('#add').dialog({title: 'Add Car', height: $('#add').height()+60}).dialogClose();
   $('body')
     .prepend($(document.createElement('div'))
-      .css('float', 'right')
+      .attr('id', 'add_link_container')
       .append($(document.createElement('h2'))
         .append($(document.createElement('a'))
           .addClass('plus_button')

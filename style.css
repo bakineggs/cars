@@ -40,3 +40,6 @@ img.edit {
   cursor: pointer;
   float: right;
 }
+#add_link_container {
+  float: right;
+}

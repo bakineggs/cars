@@ -1,4 +1,4 @@
-#add, #add_link, .edit, .delete {
+#add, #add_link, #add_link_container, .edit, .delete {
   display: none;
 }
 a, a:active, a:visited {
