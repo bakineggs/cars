@@ -43,3 +43,6 @@ img.edit {
 #add_link_container {
   float: right;
 }
+#add_link_container h2 {
+  margin: 0;
+}
