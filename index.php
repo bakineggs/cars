@@ -1,8 +1,5 @@
 <?php
-function h($val) { return htmlentities($val, ENT_QUOTES); }
-require 'car.inc.php';
-$dbh = mysql_connect('db.example.com', 'example_user', 'some_password');
-mysql_select_db('some_database');
+require 'required.inc.php';
 $cars = Car::findAll();
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
