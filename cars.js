@@ -1,7 +1,24 @@
+document_ready = false;
+recaptcha = '';
+recaptcha_written = false;
+document.write = function(body) {
+  if (recaptcha_written)
+    $('#recaptcha').append(body);
+  else if (!document_ready)
+    recaptcha += body;
+  else {
+    while (!recaptcha_written) sleep(50);
+    $('#recaptcha').append(body);
+  }
+}
+
 $(document).ready(function() {
+  document_ready = true;
+  $('#recaptcha').append(recaptcha);
+  recaptcha_written = true;
   $('#cars').tablesorter({ sortList: [ [0,0] ] });
   $('#add h2').remove();
-  $('#add').dialog({title: 'Add Car', height: $('#add').height()+60}).dialogClose();
+  $('#add').dialog({title: 'Add Car', width: 365, height: $('#add').height()+190}).dialogClose();
   $('body')
     .prepend($(document.createElement('div'))
       .attr('id', 'add_link_container')
@@ -20,6 +37,8 @@ $(document).ready(function() {
       url: 'add.php',
       data: {
         'js': 'true',
+        'recaptcha_challenge_field': $('#add form input[name=recaptcha_challenge_field]').val(),
+        'recaptcha_response_field': $('#add form input[name=recaptcha_response_field]').val(),
         'price': $('#add form input[name=price]').val(),
         'make': $('#add form input[name=make]').val(),
         'model': $('#add form input[name=model]').val(),
@@ -31,6 +50,12 @@ $(document).ready(function() {
       },
       success: function(data) {
         row = $(document.createElement('tr'));
+        eval('data = '+data);
+        if (data['recaptcha']) {
+          $('#recaptcha').html(data['recaptcha']);
+          $('#add_form input[type=submit]').attr('disabled','');
+          return false;
+        }
         fillRow(row, data);
         $('#cars tbody').append(row);
         $('#cars tbody tr:last-child').fadeIn();
@@ -94,9 +119,9 @@ $(document).ready(function() {
   $('#cars .dealer').livequery(function() { addEditLink(this) });
   $('#cars td.edit').livequery(function() { $(this).remove(); });
 });
+
 function fillRow(row, data)
 {
-  eval('data = '+data);
   row.children().remove();
   if (data['carfax'])
     vinrow = $(document.createElement('td')).addClass('vin')
@@ -136,6 +161,7 @@ function fillRow(row, data)
           .attr('alt', 'Delete')
           .val('Delete')))));
 }
+
 function addEditLink(cell)
 {
   $(cell).prepend($(document.createElement('img'))
@@ -145,6 +171,7 @@ function addEditLink(cell)
       editCell($(cell));
     }));
 }
+
 function editCell(cell)
 {
   cell.parent().children().children('img.edit').remove();
@@ -217,6 +244,7 @@ function editCell(cell)
       break;
   }
 }
+
 function saveRow(row, values)
 {
   data = $.extend({

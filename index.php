@@ -1,5 +1,6 @@
 <?php
 require 'required.inc.php';
+require 'recaptchalib.php';
 $cars = Car::findAll();
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
@@ -89,6 +90,11 @@ $cars = Car::findAll();
             <tr>
               <td>Dealer</td>
               <td><input type="text" name="dealer" /></td>
+            </tr>
+            <tr>
+              <td id="recaptcha" colspan="2">
+                <?= recaptcha_get_html($RECAPTCHA_PUBLIC_KEY, $_GET['recaptcha_error']) ?>
+              </td>
             </tr>
             <tr>
               <td colspan="2" align="right"><input type="submit" value="Add" /></td>
