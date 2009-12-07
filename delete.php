@@ -6,5 +6,4 @@ if ($_POST['js']=='true')
   echo json_encode(array('deleted' => $deleted));
 else
   header('Location: index.php');
-mysql_close($dbh);
 ?>

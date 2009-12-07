@@ -77,6 +77,3 @@ if ($_POST)
     </form>
   </body>
 </html>
-<?php
-mysql_close($dbh);
-?>

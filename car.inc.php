@@ -22,8 +22,8 @@ class Car
   {
     if (!sizeof(self::$_rows) || $force)
     {
-      $query = mysql_query("select * from cars where deleted=0");
-      while ($row = mysql_fetch_assoc($query))
+      $query = pg_query("select * from cars where not deleted");
+      while ($row = pg_fetch_assoc($query))
         self::$_rows[$row['id']] = $row;
     }
   }
@@ -46,8 +46,7 @@ class Car
   {
     if ($this->id == 0)
     {
-      mysql_query("insert into cars () values ()");
-      $this->id = mysql_insert_id();
+      $this->id = pg_last_oid(pg_query("insert into cars () values ()"));
       self::$_rows[$this->id] = array();
     }
     self::$_rows[$this->id]['id'] = $this->id;
@@ -59,16 +58,21 @@ class Car
     self::$_rows[$this->id]['vin'] = $this->vin;
     self::$_rows[$this->id]['uri'] = $this->uri;
     self::$_rows[$this->id]['dealer'] = $this->dealer;
-    mysql_query('replace into cars (`'.implode('`, `',array_map('mysql_real_escape_string',array_keys(self::$_rows[$this->id]))).'`) values (\''.implode("', '",array_map('mysql_real_escape_string',self::$_rows[$this->id])).'\')');
+
+    $updates = array();
+    foreach (self::$_rows[$this->id] as $col => $val)
+      $updates[] = pesc($col) . '=' . pesc($val);
+
+    pg_query('update cars set ' . implode(', ', $updates) . ' where id=\'' . pesc($this->id) . '\'');
     $this->loadVariables();
   }
   public function delete()
   {
     if ($this->id == 0)
       return false;
-    mysql_query('update cars set deleted=1 where id=\''.mysql_real_escape_string($this->id).'\'');
+    $result = pg_query('update cars set deleted=TRUE where id=\''.pesc($this->id).'\'');
     self::getRows(true);
-    return mysql_affected_rows()>0;
+    return pg_affected_rows($result) > 0;
   }
   private function loadVariables($getrows = true)
   {
